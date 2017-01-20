@@ -19,49 +19,20 @@ public abstract class BaseFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = super.onCreateView(inflater, container, savedInstanceState);
+  return super.onCreateView(inflater, container, savedInstanceState);
 
-        return v;
-    }
-
-    public void showLoadingDialog(String msg) {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(getActivity());
-            mProgressDialog.setMessage(msg);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.setCanceledOnTouchOutside(false);
-            mProgressDialog.show();
-        } else {
-            if (!mProgressDialog.isShowing()) {
-                mProgressDialog.show();
-            }
-        }
     }
 
 
-    public void showProgressLoadingDialog(String msg, int maxCount) {
-        mProgressDialog = new ProgressDialog(getActivity());
-        mProgressDialog.setMessage(msg);
-        mProgressDialog.setMax(maxCount);
-        mProgressDialog.setProgress(0);
-        mProgressDialog.setCancelable(false);
-        mProgressDialog.setCanceledOnTouchOutside(false);
-        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        mProgressDialog.show();
-    }
 
-    public void setCountOnLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.setProgress(mProgressDialog.getProgress() + 1);
-        }
-    }
 
-    public void showLoadingDialog() {
+
+    protected void showLoadingDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getActivity());
             mProgressDialog.setMessage(getString(R.string.please_wait));
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.setCancelable(true);
+            mProgressDialog.setCanceledOnTouchOutside(true);
             mProgressDialog.show();
         } else {
             if (!mProgressDialog.isShowing()) {
@@ -70,7 +41,7 @@ public abstract class BaseFragment extends DialogFragment {
         }
     }
 
-    public void hideLoadingDialog() {
+    protected void hideLoadingDialog() {
         try {
             if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 mProgressDialog.dismiss();

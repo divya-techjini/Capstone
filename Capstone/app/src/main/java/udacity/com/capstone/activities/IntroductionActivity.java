@@ -10,7 +10,6 @@ import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
 import udacity.com.capstone.R;
-import udacity.com.capstone.data.ReCallPreference;
 
 public class IntroductionActivity extends AppIntro {
 

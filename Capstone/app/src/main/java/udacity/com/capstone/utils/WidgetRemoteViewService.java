@@ -4,17 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
-import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import udacity.com.capstone.R;
-import udacity.com.capstone.data.Record;
-import udacity.com.capstone.data.provider.RecordContract;
+import udacity.com.capstone.data.Contract;
 
 
 public class WidgetRemoteViewService extends RemoteViewsService {
@@ -57,7 +51,7 @@ public class WidgetRemoteViewService extends RemoteViewsService {
             final long pId = Binder.clearCallingIdentity();
 
             mCursor = getContentResolver().query(
-                    RecordContract.CONTENT_URI,
+                    Contract.Record.uri,
                     null,
                     null,
                     null,
@@ -76,7 +70,7 @@ public class WidgetRemoteViewService extends RemoteViewsService {
         public RemoteViews getViewAt(int position) {
             try {
                 mCursor.moveToPosition(position);
-                int columne_one = mCursor.getColumnIndex(RecordContract.NAME);
+                int columne_one = mCursor.getColumnIndex(Contract.Record.COLUMN_NAME);
                 String name = mCursor.getString(columne_one);
                 // create List Item for Widget ListView
                 RemoteViews listItemRemoteView = new RemoteViews(mContext.getPackageName(), R.layout.item_widget_record);
@@ -91,7 +85,7 @@ public class WidgetRemoteViewService extends RemoteViewsService {
         @Override
         public long getItemId(int position) {
             mCursor.moveToPosition(position);
-            return mCursor.getLong(mCursor.getColumnIndex(RecordContract._ID));
+            return mCursor.getLong(mCursor.getColumnIndex(Contract.Record._ID));
         }
 
         @Override

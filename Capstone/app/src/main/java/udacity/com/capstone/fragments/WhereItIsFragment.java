@@ -27,8 +27,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import udacity.com.capstone.BaseFragment;
 import udacity.com.capstone.R;
+import udacity.com.capstone.data.Contract;
 import udacity.com.capstone.data.ReCallPreference;
-import udacity.com.capstone.data.provider.RecordContract;
+import udacity.com.capstone.data.RecordProvider;
 import udacity.com.capstone.utils.ClickSpan;
 import udacity.com.capstone.utils.Constants;
 import udacity.com.capstone.utils.RecallWidgetProvider;
@@ -147,11 +148,12 @@ public class WhereItIsFragment extends BaseFragment {
     }
 
     private void addItem(String what, String where) {
+
         ContentValues values = new ContentValues();
         values.clear();
-        values.put(RecordContract.NAME, what.trim());
-        values.put(RecordContract.AUDIO_PATH, where);
-        getActivity().getContentResolver().insert(RecordContract.CONTENT_URI, values);
+        values.put(Contract.Record.COLUMN_NAME, what.trim());
+        values.put(Contract.Record.COLUMN_PATH, where);
+    getActivity().getContentResolver().insert(Contract.Record.uri, values);
         showSuccessDialog();
     }
 

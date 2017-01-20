@@ -12,7 +12,7 @@
     <string name="tutorial_two">Just tap mic and tell me \'WHAT\' you want me to remember.</string>
     <string name="tutorial_three">Let me know \'WHERE\' you placed it by tapping on mic.</string>
     <string name="tutorial_four">Click on item name and playback audio to know where you placed it.</string>
-    <string name="speech_prompt">Say something&#8230;</string>
+
     <string name="please_wait">Please wait…</string>
     <string name="no_data">Opps!! No records found.Add your recordings by clicking on floating button.</string>
     <string name="success">Successfully uploaded contents</string>
@@ -22,14 +22,12 @@
     <string name="uploading_progress">Upload in progress</string>
     <string name="error_file">Error while trying to create the folder</string>
     <!--  Menu items-->
-    <string name="menu_item_change">Record Time</string>
+
     <string name="menu_item_Backup">Back Up</string>
     <string name="menu_item_tutorial">Tutorial</string>
-    <string name="menu_item_feedback">Feedback</string>
+    <string name="menu_item_search">Search</string>
+    <string name="btn_ok">OK</string>
 
-    <string name="btn_ok">Ok</string>
-    <string name="lbl_backup">Backup your data to google drive</string>
-    <string name="lbl_item_where">tap on mic and tell me where it is.</string>
     <string name="lbl_item_exists">Item already exists. Please try with another name.</string>
     <string name="lbl_success">Item saved successfully.</string>
     <string name="lbl_need">Permission needed</string>
@@ -37,8 +35,8 @@
     <string name="lbl_one">1</string>
     <string name="lbl_two">2</string>
     <string name="google_drive_key">AIzaSyB97cxkDUc3a1MIpUUbatiMX4hFP1u0Fqc</string>
-    <string name="btn_backup">Back up</string>
-    <string name="upload">Uploading files.Please wait...</string>
+
+    <string name="upload">Uploading files.Please wait&#8230;</string>
     <string name="widget_title">Recall</string>
     <string name="title_picker">Set Time (in sec)</string>
     <string name="title_what">What to remember?</string>
@@ -59,6 +57,11 @@
     <string name="error_no_match">No match</string>
     <string name="error_busy">RecognitionService busy</string>
     <string name="error_server">error from server</string>
-    <string name="error_speech">No speech input</string>
+
     <string name="error_understand">Didn\'t understand, please try again.</string>
+    <string name="error_denied">Go to settings and enable permissions</string>
+    <string name="conent_des_mic">Tap and speak</string>
+    <string name="conent_des_splash">Splash logo</string>
+
+    <string name="conent_des_play">Play</string>
 </resources>

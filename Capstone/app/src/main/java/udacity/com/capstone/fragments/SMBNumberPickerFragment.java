@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.NumberPicker;
 
 import udacity.com.capstone.R;
-import udacity.com.capstone.RecordingActivity;
 
 import static udacity.com.capstone.utils.Constants.MAX_VALUE;
 import static udacity.com.capstone.utils.Constants.MIN_VALUE;
@@ -25,8 +24,8 @@ public class SMBNumberPickerFragment extends DialogFragment {
 
 
     public static SMBNumberPickerFragment newInstance() {
-        SMBNumberPickerFragment frag = new SMBNumberPickerFragment();
-        return frag;
+        return new SMBNumberPickerFragment();
+
     }
 
     public void setOnValueSelectListener(OnValueSelectListener mOnValueSelectListener) {
@@ -43,11 +42,11 @@ public class SMBNumberPickerFragment extends DialogFragment {
         dialog.setView(npView);
         dialog.setTitle(R.string.title_picker);
         final NumberPicker picker = (NumberPicker) npView.findViewById(R.id.numberPicker);
-        final String[] valueSet = new String[MAX_VALUE-MIN_VALUE ];
+        final String[] valueSet = new String[MAX_VALUE - MIN_VALUE];
 
-        for (int i = MIN_VALUE; i <MAX_VALUE; i ++) {
+        for (int i = MIN_VALUE; i < MAX_VALUE; i++) {
 
-            valueSet[i-MIN_VALUE] = String.valueOf(i);
+            valueSet[i - MIN_VALUE] = String.valueOf(i);
         }
         picker.setDisplayedValues(valueSet);
         picker.setMaxValue(valueSet.length - 1);
@@ -57,7 +56,7 @@ public class SMBNumberPickerFragment extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 AlertDialog pickerDialog = (AlertDialog) dialogInterface;
                 final NumberPicker picker = (NumberPicker) pickerDialog.findViewById(R.id.numberPicker);
-                mOnValueSelectListener.onValueSelect( Integer.parseInt(picker.getDisplayedValues()[picker.getValue()]));
+                mOnValueSelectListener.onValueSelect(Integer.parseInt(picker.getDisplayedValues()[picker.getValue()]));
             }
         });
 

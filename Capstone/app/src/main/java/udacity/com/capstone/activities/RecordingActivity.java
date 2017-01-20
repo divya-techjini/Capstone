@@ -1,7 +1,6 @@
-package udacity.com.capstone;
+package udacity.com.capstone.activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import udacity.com.capstone.activities.IntroductionActivity;
-import udacity.com.capstone.data.provider.RecordContract;
+import udacity.com.capstone.R;
+import udacity.com.capstone.data.Contract;
 import udacity.com.capstone.fragments.WhatToRememberFragment;
 import udacity.com.capstone.fragments.WhereItIsFragment;
 
@@ -92,7 +91,7 @@ public class RecordingActivity extends AppCompatActivity implements WhatToRememb
     private boolean isExistsAlready(String what) {
         setTitle(R.string.title_where);
         what.trim();
-        Cursor cursor = getContentResolver().query(RecordContract.CONTENT_URI, null, "name=?", new String[]{what}, null);
+        Cursor cursor = getContentResolver().query(Contract.Record.uri, null, "name=?", new String[]{what}, null);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.close();
             return true;

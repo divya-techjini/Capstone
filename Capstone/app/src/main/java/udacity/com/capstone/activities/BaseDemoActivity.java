@@ -14,7 +14,6 @@
 
 package udacity.com.capstone.activities;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -50,8 +49,8 @@ import java.util.List;
 import java.util.Locale;
 
 import udacity.com.capstone.R;
-import udacity.com.capstone.data.Record;
-import udacity.com.capstone.data.provider.RecordContract;
+import udacity.com.capstone.data.Contract;
+import udacity.com.capstone.data.RecordItem;
 
 /**
  * An abstract activity that handles authorization and connection to the Drive
@@ -64,11 +63,9 @@ public class BaseDemoActivity extends AppCompatActivity implements
     private static final String TAG = "BaseDriveActivity";
     private int notificationId = 1;
     private DriveId mFolderDriveId;
-    int count = 0;
-    List<Record> items = new ArrayList<>();
-    int uploadCount = 0;
-    NotificationCompat.Builder notificationBuilder;
-    NotificationManager notificationManager;
+List<RecordItem> items=new ArrayList<>();
+    private NotificationCompat.Builder notificationBuilder;
+    private  NotificationManager notificationManager;
     protected static final int REQUEST_CODE_RESOLUTION = 1;
     private GoogleApiClient mGoogleApiClient;
 
@@ -105,13 +102,14 @@ public class BaseDemoActivity extends AppCompatActivity implements
                 return;
             }
             mFolderDriveId = result.getDriveFolder().getDriveId();
-            Cursor cursor = getContentResolver().query(RecordContract.CONTENT_URI, null, null, null, null);
+            Cursor cursor = getContentResolver().query(Contract.Record.uri, null, null, null, null);
             if (cursor != null) {
                 try {
-                    int columne_one = cursor.getColumnIndex(RecordContract.NAME);
-                    int columne_two = cursor.getColumnIndex(RecordContract.AUDIO_PATH);
+                    int columne_one = cursor.getColumnIndex(Contract.Record.COLUMN_NAME);
+                    int columne_two = cursor.getColumnIndex(Contract.Record.COLUMN_PATH);
                     while (cursor.moveToNext()) {
-                        Record record = new Record(cursor.getString(columne_one), cursor.getString(columne_two));
+                        RecordItem record = new RecordItem(cursor.getString(columne_one),
+                                cursor.getString(columne_two));
                         items.add(record);
 
 
@@ -141,7 +139,7 @@ public class BaseDemoActivity extends AppCompatActivity implements
         @Override
         protected Boolean doInBackground(Void... args) {
             int count = 0;
-            for (final Record record : items) {
+            for (final RecordItem record : items) {
 
                 DriveApi.DriveContentsResult driveContentsResult = Drive.DriveApi.newDriveContents(mGoogleApiClient).await();
                 if (!driveContentsResult.getStatus().isSuccess()) {
@@ -156,11 +154,8 @@ public class BaseDemoActivity extends AppCompatActivity implements
                     count++;
                 }
             }
-            if (count == items.size()) {
-                return true;
-            }
+            return count == items.size();
 
-            return false;
         }
 
         @Override
@@ -183,11 +178,11 @@ public class BaseDemoActivity extends AppCompatActivity implements
     }
 
 
-    private boolean uploadRecord(DriveFolder folder, DriveContents driveContents, Record record) {
+    private boolean uploadRecord(DriveFolder folder, DriveContents driveContents, RecordItem record) {
         boolean response = true;
         OutputStream outputStream = driveContents.getOutputStream();
         try {
-            Uri uri = Uri.parse(record.getAudioPath());
+            Uri uri = Uri.parse(record.audioPath);
             InputStream inputStream = getContentResolver().openInputStream(uri);
 
             if (inputStream != null) {
@@ -203,7 +198,7 @@ public class BaseDemoActivity extends AppCompatActivity implements
             Log.e("EX", e.getMessage());
         }
         MetadataChangeSet changeSet = new MetadataChangeSet.Builder()
-                .setTitle(record.getName() + ".3gp")
+                .setTitle(record.name+ ".3gp")
                 .setMimeType("audio/3gpp")
                 .setStarred(true).build();
 
@@ -293,8 +288,8 @@ public class BaseDemoActivity extends AppCompatActivity implements
                 }
             };
             mProgressDialog.setMessage(getString(R.string.upload));
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.setCancelable(true);
+            mProgressDialog.setCanceledOnTouchOutside(true);
             mProgressDialog.show();
         } else {
             if (!mProgressDialog.isShowing()) {

@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +45,7 @@ public class WhatToRememberFragment extends BaseFragment implements RecognitionL
     String LOG_TAG = WhatToRememberFragment.class.getSimpleName();
 
     public static WhatToRememberFragment newInstance() {
-        WhatToRememberFragment fragment = new WhatToRememberFragment();
-        return fragment;
+      return new WhatToRememberFragment();
     }
 
     @Nullable
@@ -103,8 +101,9 @@ public class WhatToRememberFragment extends BaseFragment implements RecognitionL
     };
 
     private void setText(int value) {
-        txtData.setText(Html.fromHtml(String.format(getString(R.string.lbl_item_what),
-                String.valueOf(value), getString(R.string.lbl_sec))));
+        String str=String.format(getString(R.string.lbl_item_what),
+                String.valueOf(value), getString(R.string.lbl_sec));
+        txtData.setText(Html.fromHtml(str));
         Utility.clickify(txtData, getString(R.string.lbl_here), spanListener);
     }
 
@@ -174,6 +173,7 @@ public class WhatToRememberFragment extends BaseFragment implements RecognitionL
 
     @Override
     public void onError(int errorCode) {
+        hideLoadingDialog();
         String errorMessage = getErrorText(errorCode);
         Log.d(LOG_TAG, "FAILED " + errorMessage);
         Toast.makeText(getActivity(), errorCode + " " + errorMessage, Toast.LENGTH_LONG).show();
@@ -186,6 +186,7 @@ public class WhatToRememberFragment extends BaseFragment implements RecognitionL
 
     @Override
     public void onPartialResults(Bundle arg0) {
+        hideLoadingDialog();
 
     }
 

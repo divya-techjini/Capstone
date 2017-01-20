@@ -39,6 +39,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/conent_des_mic"
             android:src="@drawable/ic_mic" />
     </RelativeLayout>
 

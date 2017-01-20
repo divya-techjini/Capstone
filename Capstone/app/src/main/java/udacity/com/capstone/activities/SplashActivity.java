@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkAndRequestPermissions();
         }
@@ -40,12 +43,12 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private void showExplanation(int title,
-                                 int message,
-                                 final String[] permission) {
+    private void showExplanation(
+            final String[] permission) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title)
-                .setMessage(message)
+        builder.setTitle(R.string.lbl_need)
+                .setMessage(R.string.lbl_need_audio)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         requestPermission(permission, REQUEST_ID_MULTIPLE_PERMISSIONS);
@@ -103,7 +106,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        Log.e("tag", "Permission callback called-------");
         switch (requestCode) {
             case REQUEST_ID_MULTIPLE_PERMISSIONS: {
 
@@ -112,37 +114,33 @@ public class SplashActivity extends AppCompatActivity {
                 perms.put(Manifest.permission.RECORD_AUDIO, PackageManager.PERMISSION_GRANTED);
                 perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
                 // Fill with actual results from user
-                Log.e("tag", "Permission enter called-------" + grantResults.length);
                 if (grantResults.length > 0) {
                     for (int i = 0; i < permissions.length; i++) {
                         perms.put(permissions[i], grantResults[i]);
                     }
-                    Log.e("tag", "Permission enter called-------" + (perms.get(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) +
-                            (perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED));
                     // Check for both permissions
                     if (perms.get(Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED
                             && perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                         delayedStart();
                     } else {
-                        Log.e("afs", "Some permissions are not granted ask again ");
                         //permission is denied (this is the first time, when "never ask again" is not checked) so ask again explaining the usage of permission
 //                        // shouldShowRequestPermissionRationale will return true
                         //show the dialog or snackbar saying its necessary and try again otherwise proceed with setup.
                         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)
                                 && ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                            showExplanation(R.string.lbl_need, R.string.lbl_need_audio, new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                            showExplanation(new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE});
 
                         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)) {
-                            showExplanation(R.string.lbl_need, R.string.lbl_need_audio, new String[]{Manifest.permission.RECORD_AUDIO});
+                            showExplanation(new String[]{Manifest.permission.RECORD_AUDIO});
 
                         } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                            showExplanation(R.string.lbl_need, R.string.lbl_need_audio, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                            showExplanation(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
 
                         }
                         //permission is denied (and never ask again is  checked)
                         //shouldShowRequestPermissionRationale will return false
                         else {
-                            Toast.makeText(this, "Go to settings and enable permissions", Toast.LENGTH_LONG)
+                            Toast.makeText(this, getString(R.string.error_denied), Toast.LENGTH_LONG)
                                     .show();
 
                             //                            //proceed with logic by disabling the related features or quit the app.
@@ -151,12 +149,11 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
             default:
-                Log.e("afs", "skipped");
+
                 break;
         }
 
     }
-
 
 
 }
