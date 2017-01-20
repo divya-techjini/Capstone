@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Recall</string>
+    <string name="app_version">V1.0</string>
+
+
+    <string name="tutorial_title_one">Tracking is easy!!</string>
+    <string name="tutorial_title_two">What it is ??</string>
+    <string name="tutorial_title_three">Where it is ??</string>
+    <string name="tutorial_title_four">Bingo! you are done !!</string>
+
+    <string name="tutorial_one">Now Tracking is easy. Tap, record and playback</string>
+    <string name="tutorial_two">Just tap mic and tell me \'WHAT\' you want me to remember.</string>
+    <string name="tutorial_three">Let me know \'WHERE\' you placed it by tapping on mic.</string>
+    <string name="tutorial_four">Click on item name and playback audio to know where you placed it.</string>
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="no_data">Opps!! No records found.Add your recordings by clicking on floating button.</string>
+    <string name="success">Successfully uploaded contents</string>
+    <string name="success_nothin">No contents to upload.</string>
+    <string name="error">Error while editing contents</string>
+    <string name="uploading">Recall</string>
+    <string name="uploading_progress">Upload in progress</string>
+    <string name="error_file">Error while trying to create the folder</string>
+    <!--  Menu items-->
+    <string name="menu_item_change">Record Time</string>
+    <string name="menu_item_Backup">Back Up</string>
+    <string name="menu_item_tutorial">Tutorial</string>
+    <string name="menu_item_feedback">Feedback</string>
+
+    <string name="btn_ok">Ok</string>
+    <string name="lbl_backup">Backup your data to google drive</string>
+    <string name="lbl_item_where">tap on mic and tell me where it is.</string>
+    <string name="lbl_item_exists">Item already exists. Please try with another name.</string>
+    <string name="lbl_success">Item saved successfully.</string>
+    <string name="lbl_need">Permission needed</string>
+    <string name="lbl_need_audio">App requires permission to perform</string>
+    <string name="lbl_one">1</string>
+    <string name="lbl_two">2</string>
+    <string name="google_drive_key">AIzaSyB97cxkDUc3a1MIpUUbatiMX4hFP1u0Fqc</string>
+    <string name="btn_backup">Back up</string>
+    <string name="upload">Uploading files.Please wait...</string>
+    <string name="widget_title">Recall</string>
+    <string name="title_picker">Set Time (in sec)</string>
+    <string name="title_what">What to remember?</string>
+    <string name="title_where">Where it is?</string>
+    <string name="lbl_item_what" formatted="false"><![CDATA[ Tap on mic and speak.Record Time : %s%s. \n To change record time, click
+    <u><font color=#FF6B3D>here.</font></u>]]></string>
+    <string name="lbl_here">here.</string>
+    <string name="lbl_sec">Sec</string>
+    <string name="lbl_default_record_name">recall.</string>
+    <string name="item_name">Item Name : </string>
+
+    <!-- error strings -->
+    <string name="error_audio_error">Audio recording error</string>
+    <string name="error_client">Client side error</string>
+    <string name="error_permission">Insufficient permissions</string>
+    <string name="error_network">Network error</string>
+    <string name="error_timeout">Network timeout</string>
+    <string name="error_no_match">No match</string>
+    <string name="error_busy">RecognitionService busy</string>
+    <string name="error_server">error from server</string>
+    <string name="error_speech">No speech input</string>
+    <string name="error_understand">Didn\'t understand, please try again.</string>
+</resources>

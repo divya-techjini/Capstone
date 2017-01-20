@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tutorials">
+        <item>@string/tutorial_one</item>
+        <item>@string/tutorial_two</item>
+        <item>@string/tutorial_three</item>
+        <item>@string/tutorial_four</item>
+    </array>
+</resources>
