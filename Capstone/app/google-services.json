@@ -6,7 +6,34 @@
     "storage_bucket": ""
   },
   "client": [
-
+    {
+      "client_info": {
+        "mobilesdk_app_id": "",
+        "android_client_info": {
+          "package_name": ""
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "",
+            "certificate_hash": ""
+          }
+        },
+        {
+          "client_id": "",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "",
+            "certificate_hash": ""
+          }
+        },
+        {
+          "client_id": "",
+          "client_type": 3
+        }
       ],
       "api_key": [
         {
