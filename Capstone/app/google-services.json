@@ -1,43 +1,16 @@
 {
   "project_info": {
-    "project_number": "343984696834",
-    "firebase_url": "https://recall-156110.firebaseio.com",
-    "project_id": "recall-156110",
-    "storage_bucket": "recall-156110.appspot.com"
+    "project_number": "",
+    "firebase_url": "",
+    "project_id": "",
+    "storage_bucket": ""
   },
   "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:343984696834:android:ea37edee85596d72",
-        "android_client_info": {
-          "package_name": "udacity.com.capstone"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "343984696834-u4ij2kuc7r7d8cs3081udshlf6pmsu7r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "udacity.com.capstone",
-            "certificate_hash": "223C544D2EF03CDED1A2EAEE2CCF98FFD2FC95B5"
-          }
-        },
-        {
-          "client_id": "343984696834-i1rrhqib4ikmnfheojiu0dr2p761ubko.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "udacity.com.capstone",
-            "certificate_hash": "34D0E94D1465065FBBABA06E756149437C79B471"
-          }
-        },
-        {
-          "client_id": "343984696834-kqf2hkli9sspl88p8uer9nu058mhqr3c.apps.googleusercontent.com",
-          "client_type": 3
-        }
+
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAV_RBVc7kw4RIACHlQxWxPfrjNcI0CS9g"
+          "current_key": ""
         }
       ],
       "services": {
@@ -48,7 +21,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "343984696834-kqf2hkli9sspl88p8uer9nu058mhqr3c.apps.googleusercontent.com",
+              "client_id": "",
               "client_type": 3
             }
           ]
